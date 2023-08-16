@@ -1,0 +1,13 @@
+      <svg
+        className="vector"
+        width="35"
+        height="30"
+        viewBox="0 0 35 30"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M6.65992 6.10352e-05L0 3.52506L21.6329 15.0001L0 26.4751L6.65992 30.0001L35 15.0001L6.65992 6.10352e-05Z"
+          fill="white"
+        />
+      </svg>
