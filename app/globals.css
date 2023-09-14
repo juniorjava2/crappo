@@ -75,30 +75,42 @@
 
 /* START: Footer styles */
 .footer {
-  @apply flex flex-col text-black-100  mt-5 border-t border-gray-100;
+  @apply flex flex-col bg-color-primary text-xl text-white font-body-small-regular py-4;
 }
 
-.footer__links-container {
+.footer__top{
+  @apply flex flex-col sm:flex-row md:flex-row items-center px-8;
+}
+.footer__logo-container {
   @apply flex max-md:flex-col flex-wrap justify-between gap-5 sm:px-16 px-6 py-10;
 }
-
-.footer__rights {
-  @apply flex flex-col justify-start items-start gap-6;
+.footer__logo{
+  @apply relative w-10 h-10;
 }
 
+.footer__options{
+  @apply flex flex-col text-base leading-[38px] text-gray-6 mix-blend-normal
+}
 .footer__links {
-  @apply flex-1 w-full flex md:justify-end flex-wrap max-md:mt-10 gap-20;
+  @apply flex flex-col justify-start items-start;
 }
 
-.footer__link {
-  @apply flex flex-col gap-6 text-base min-w-[170px];
+.footer__resources {
+  @apply flex flex-col;
 }
 
-.footer__copyrights {
+.footer__payments {
+  @apply flex flex-col;
+}
+
+.footer__bottom {
   @apply flex justify-between items-center flex-wrap mt-10 border-t border-gray-100 sm:px-16 px-6 py-10;
 }
 
-.footer__copyrights-link {
+.footer__copyright {
+  @apply flex-1 flex sm:justify-end justify-center max-sm:mt-4 gap-10;
+}
+.footer__social-icons {
   @apply flex-1 flex sm:justify-end justify-center max-sm:mt-4 gap-10;
 }
 /* END: Footer styles */

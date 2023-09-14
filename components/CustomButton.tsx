@@ -12,7 +12,7 @@ const CustomButton = ({ isDisabled, btnType, containerStyles, textStyles, title,
   >
     <span className={`flex-1 ${textStyles}`}>{title}</span>
     {rightIcon && (
-      <div className={`relative ml-4 ${"w-6 h-6" || iconSize}`}>
+      <div className={`relative ml-4 ${iconSize || "w-6 h-6"}`}>
         <Image
           src={rightIcon}
           alt="arrow_left"
