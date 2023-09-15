@@ -5,7 +5,7 @@ import { CustomButton, Graph } from ".";
 const Statistics =()=>{
     return(
         <div className="bg-[#2b076e] flex flex-row items-center justify-between text-[10px] text-white font-body-small-regular ">
-            <div className="left">
+            <div className="left w-[auto]">
                 <div className="heading rounded-br-2xl rounded-tr-2xl rounded-tl-none rounded-bl-none bg-[#35068c] w-[710px] p-4 flex flex-row items-center justify-between">
                     <div className="flex flex-row items-top justify-start ">
                         <div className="relative w-4 h-4">
@@ -38,7 +38,7 @@ const Statistics =()=>{
                         </div>
                     </div>
                 </div>
-                <div className="body rounded-br-2xl rounded-tr-2xl rounded-tl-none rounded-bl-none bg-[#35068c] w-[710px] h-[453px] mt-2">
+                <div className="body rounded-br-2xl rounded-tr-2xl rounded-tl-none rounded-bl-none bg-[#35068c] max-w-[710px] max-h-[453px] mt-2">
                     <div className="graph_header flex flex-row items-center justify-between py-4 w-[inherit]">
                         <div className="flex flex-row items-center justify-between ">
                             <div className="flex flex-row items-center justify-start ml-4">

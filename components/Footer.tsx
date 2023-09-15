@@ -36,8 +36,14 @@ const Footer = () => {
         </div>
       </div>
       <div className="footer__bottom">
-        <div className="footer__copyright"></div>
-        <div className="footer__social-icons"></div>
+        <div className="footer__copyright">
+          <p>Copyright © 2023  All Rights Reserved</p>
+        </div>
+        <div className="footer__social-icons">
+          <div className="relative h-9 w-[300px]">
+            <Image fill src="/socials.svg" alt="social-icons"/>
+          </div>
+        </div>
       </div>
     </div>
   )

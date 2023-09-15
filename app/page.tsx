@@ -11,7 +11,7 @@ export default function Home() {
       <CryptoCurrencies/>
       <Features/>
       <Statistics/>
-      <ProfitTracker/>
+      {/* <ProfitTracker/> */}
     </main>
   )
 }
