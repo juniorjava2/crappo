@@ -68,24 +68,8 @@ const Statistics =()=>{
                         <div className="relative graph  w-full h-80 mt-8 mb-4 object-contain">
                            <Image fill alt="" src="/graph_image.png"/>
                         </div>
-                        {/* <div className="graph_y-axis flex flex-col items-center justify-start">
-                            <div className="">$1350</div>
-                            <div className="">$1400</div>
-                            <div className="">$1450</div>
-                            <div className="">$1500</div>
-                            <div className="">$1550</div>
-                        </div> */}
                     </div>
-                    {/* <div className="graph_x-axis w-[583px] flex flex-row items-center justify-between">
-                        <div className="">May</div>
-                        <div className="">Jun</div>
-                        <div className="">Jul</div>
-                        <div className="">Aug</div>
-                        <div className="">Sep</div>
-                        <div className="">Oct</div>
-                        <div className="">Nov</div>
-                        <div className="">Dec</div>
-                    </div> */}
+                    
                 </div>
             </div>
             <div className="right mr-10">

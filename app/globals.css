@@ -78,19 +78,22 @@
   @apply flex flex-col bg-color-primary text-xl text-white font-body-small-regular py-4;
 }
 
-.footer__top{
+.footer__top {
   @apply flex flex-col sm:flex-row md:flex-row items-center px-8;
 }
+
 .footer__logo-container {
   @apply flex max-md:flex-col flex-wrap justify-between gap-5 sm:px-16 px-6 py-10;
 }
-.footer__logo{
+
+.footer__logo {
   @apply relative w-10 h-10;
 }
 
-.footer__options{
-  @apply flex flex-col text-base leading-[38px] text-gray-6 mix-blend-normal
+.footer__options {
+  @apply flex flex-col text-base leading-[38px] text-gray-6 mix-blend-normal;
 }
+
 .footer__links {
   @apply flex flex-col justify-start items-start;
 }
@@ -110,8 +113,23 @@
 .footer__copyright {
   @apply flex-1 flex sm:justify-end justify-center max-sm:mt-4 gap-10;
 }
+
 .footer__social-icons {
   @apply flex-1 flex sm:justify-end justify-center max-sm:mt-4 gap-10;
+}
+
+/* Additional styles for better responsiveness */
+@media (max-width: 640px) {
+  .footer__top {
+    @apply flex-col items-center; /* Center items on smaller screens */
+  }
+  
+  .footer__links,
+  .footer__resources,
+  .footer__payments {
+    @apply text-center; /* Center text on smaller screens */
+    margin-top: 1rem; /* Add spacing between sections */
+  }
 }
 /* END: Footer styles */
 
@@ -119,4 +137,4 @@
 .logo{
   @apply cursor-pointer font-bold 
 }
-/*START: Navbar section style*/
+

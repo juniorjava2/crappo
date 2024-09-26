@@ -1,46 +1,114 @@
-"use client"
+'use client'
+
 import Image from "next/image"
+import { useState, useCallback } from "react"
 import { CustomButton } from "."
 
 const Calculate = () => {
+  const [hashRate, setHashRate] = useState('')
+  const [unit, setUnit] = useState('TH/s')
+  const [estimatedEarnings, setEstimatedEarnings] = useState<number | null>(null)
+  const [error, setError] = useState('')
+
+  const calculateEarnings = useCallback(() => {
+    setError('')
+    if (!hashRate || isNaN(Number(hashRate))) {
+      setError('Please enter a valid hash rate')
+      setEstimatedEarnings(null)
+      return
+    }
+
+    // Simple estimation formula (this should be replaced with a more accurate calculation)
+    let multiplier = 0
+    switch (unit) {
+      case 'H/s': multiplier = 0.000000001; break
+      case 'KH/s': multiplier = 0.000001; break
+      case 'MH/s': multiplier = 0.001; break
+      case 'GH/s': multiplier = 1; break
+      case 'TH/s': multiplier = 1000; break
+    }
+
+    const estimatedEth = Number(hashRate) * multiplier * 0.000001 // Simplified calculation
+    setEstimatedEarnings(estimatedEth)
+  }, [hashRate, unit])
+
   return (
-    <div className="flex flex-col items-center w-full [background:linear-gradient(180deg,_#f8f9fb,_#fafbff)]">
-        <div className="flex  flex-col items-center justify-center pt-40 pb-80 text-lg text-[#e0e0e0] bg-[hsl(240,54%,11%)] w-full ">
-            <b className="text-[40px] text-center leading-[150%] inline-block text-white">
-                Check how much you can earn
-            </b>
-            <div className="px-8 text-[18px] w-[622px] text-center leading-[150%] inline-block">
-                Let’s check your hash rate to see how much you will earn today,
-                Exercitation veniam consequat sunt nostrud amet.
-            </div>
-        </div>
+    <div className="w-full bg-gradient-to-b from-[#f8f9fb] to-[#fafbff]">
+      <div className="flex flex-col items-center justify-center w-full py-20 text-white bg-[#0d0d2b]">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
+          Check how much you can earn
+        </h2>
+        <p className="text-lg text-center max-w-2xl px-4">
+          Let's check your hash rate to see how much you will earn today.
+          Exercitation veniam consequat sunt nostrud amet.
+        </p>
+      </div>
 
-        <div className=" flex flex-col items-center  -mt-40   py-10 px-8 rounded-lg  bg-white justify-start shadow-xl ">
-            <div className="flex flex-row items-center justify-start">
-                <div className="border-b-2 border-slate-700">
-                    <input type="text" className="border-none w-[400px] pl-4 placeholder-gray-400 focus:outline-none" placeholder="Enter your has rate"/>
-                </div>
-                <div className="border-b-2 border-slate-700 flex flex-row items-center mx-4">
-                    <select className="focus:outline-none text-gray-500 font-bold">
-                        <option selected className="bg-transparent text-gray-500 font-bold" >TH/s</option>
-                    </select>
-                    <div className="w-4 h-4 relative items-center">
-                        <Image fill alt="" src="/icon--arrow-down.svg" />
-                    </div>
-                </div>
-                <CustomButton title="Calculate" containerStyles="rounded-full bg-blue-500 text-white ml-8"/>
+      <div className="container mx-auto px-4">
+        <div className="bg-white rounded-lg shadow-xl -mt-20 p-6 md:p-10 max-w-4xl mx-auto">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8">
+            <div className="w-full md:w-2/5 mb-4 md:mb-0">
+              <input 
+                type="text" 
+                className="w-full border-b-2 border-gray-300 py-2 px-4 focus:outline-none focus:border-blue-500 transition-colors"
+                placeholder="Enter your hash rate"
+                value={hashRate}
+                onChange={(e) => setHashRate(e.target.value)}
+              />
             </div>
-            <div className="flex flex-col items-start justify-start mt-6  w-full">
-                <p className="text-blue-500 text-top-[48px] left-[48px] tracking-[0.04em] leading-[150%] uppercase font-medium">ESTIMATED 24 HOUR REVENUE:</p>
-                <h1 className="text-[32px] font-bold text-black-100">
-                    {`0.055 130 59 ETH`} 
-                    <span className="text-blue-500" >($1275)</span>
-                </h1>
-                <p className="text-[#828282]">Revenue will change based on mining difficulty and Ethereum price.</p>
+            <div className="w-full md:w-1/5 mb-4 md:mb-0">
+              <div className="relative">
+                <select 
+                  className="w-full appearance-none border-b-2 border-gray-300 py-2 px-4 pr-8 focus:outline-none focus:border-blue-500 transition-colors"
+                  value={unit}
+                  onChange={(e) => setUnit(e.target.value)}
+                >
+                  <option>TH/s</option>
+                  <option>GH/s</option>
+                  <option>MH/s</option>
+                  <option>KH/s</option>
+                  <option>H/s</option>
+                </select>
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                  <Image width={16} height={16} src="/icon--arrow-down.svg" alt="Dropdown arrow" />
+                </div>
+              </div>
             </div>
+            <div className="w-full md:w-1/5">
+              <CustomButton 
+                title="Calculate" 
+                containerStyles="w-full rounded-full bg-blue-500 text-white py-2 px-4 hover:bg-blue-600 transition-colors"
+                handleClick={calculateEarnings}
+              />
+            </div>
+          </div>
+          
+          {error && (
+            <p className="text-red-500 text-sm mb-4">{error}</p>
+          )}
+
+          <div className="border-t pt-6">
+            <p className="text-blue-500 text-sm font-medium tracking-wider uppercase mb-2">
+              ESTIMATED 24 HOUR REVENUE:
+            </p>
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+              {estimatedEarnings !== null 
+                ? `${estimatedEarnings.toFixed(8)} ETH `
+                : '0.000000000 ETH '}
+              <span className="text-blue-500">
+                ({estimatedEarnings !== null 
+                  ? `$${(estimatedEarnings * 2000).toFixed(2)}` // Assuming 1 ETH = $2000
+                  : '$0.00'})
+              </span>
+            </h3>
+            <p className="text-gray-600 text-sm">
+              Revenue will change based on mining difficulty and Ethereum price.
+            </p>
+          </div>
         </div>
+      </div>
     </div>
-
   )
 }
+
 export default Calculate

@@ -13,7 +13,7 @@ import ActiveCard from "./ActiveCard";
 import Features from "./Features";
 import ProfitTracker from "./ProfitTracker";
 import Statistics from "./Statistics";
-import Graph from "./Graph";
+import MobileNav from "./MobileNav";
 
 export{
     Hero,
@@ -31,5 +31,5 @@ export{
     Features,
     ProfitTracker,
     Statistics,
-    Graph,
+    MobileNav
 }
