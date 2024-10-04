@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@canvasjs/charts": "^3.10.10",
     "@canvasjs/react-charts": "^1.0.2",
     "@headlessui/react": "^1.7.15",
     "@types/node": "20.4.2",

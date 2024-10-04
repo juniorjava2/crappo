@@ -1,6 +1,6 @@
 "use client"
 import Image from "next/image"
-import { CustomButton, Graph } from ".";
+import { CustomButton } from ".";
 
 const Statistics =()=>{
     return(
